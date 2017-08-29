@@ -10,15 +10,33 @@ import UIKit
 
 class ViewController: UIViewController
 {
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet var colorDisplays: [UIView]!
+   
+
+    @IBAction func onStartButtonPressed(_ sender: Any)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-        }
-
+    {
+        flashColor(number: 0)
+    }
+    
   
+    
+    
+    
+    
+    func flashColor(number:Int)
+    {
+        UIView.transition(with: colorDisplays[number], duration: 0.5, options: .transitionCrossDissolve, animations: {
+            self.colorDisplays[number]
+        }, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+        UIView.transition(with: colorDisplays[number], duration:0.5 , options: .transitionCrossDissolve, animations:
+            {
+            self.colorDisplays[number].alpha = 1.0
+        }, completion: nil)
+    }
 
-
+    
+    
 }
 
