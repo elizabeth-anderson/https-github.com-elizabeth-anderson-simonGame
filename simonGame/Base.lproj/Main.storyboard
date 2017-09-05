@@ -108,10 +108,11 @@
                     <connections>
                         <outlet property="backgroundView" destination="YBe-FM-wZU" id="FdZ-WB-ztn"/>
                         <outlet property="messageLabel" destination="QrQ-6k-sN4" id="IDv-OQ-cvB"/>
+                        <outlet property="startButton" destination="Cl9-lt-Cy8" id="Dsy-xg-j1T"/>
                         <outletCollection property="colorDisplays" destination="NPv-Ve-woe" collectionClass="NSMutableArray" id="Inr-iD-n3Q"/>
                         <outletCollection property="colorDisplays" destination="bEf-b6-qtv" collectionClass="NSMutableArray" id="qS0-ld-awK"/>
                         <outletCollection property="colorDisplays" destination="zD6-I5-eIv" collectionClass="NSMutableArray" id="I1o-ZL-Ngy"/>
-                        <outletCollection property="colorDisplays" destination="kQf-nH-6gx" collectionClass="NSMutableArray" id="D1l-TM-dOY"/>
+                        <outletCollection property="colorDisplays" destination="kQf-nH-6gx" collectionClass="NSMutableArray" id="KeH-h3-1Hw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

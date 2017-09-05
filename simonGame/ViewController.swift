@@ -10,26 +10,44 @@ import UIKit
 
 class ViewController: UIViewController
 {
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet var colorDisplays: [UIView]!
     @IBOutlet weak var backgroundView: UIView!
     var pattern = [Int]()
     var timer = Timer()
     var index = 0
+    var playersTurn = true
+    var endGame = true
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
     
-    @IBAction func onStartButtonPressed(_ sender: Any)
-        
+    func restartGame()
     {
-        for _ in 0...10 {
-            addToPattern()
-        }
-        
+        pattern.removeAll()
+        index = 0
+        addToPattern()
+        startButton.alpha = 1.0
+    }
+    @IBAction func onStartButtonPressed(_ sender: Any)
+    {
+        if endGame
+    {
+        restartGame()
         displayPattern()
+        endGame = false
+        startButton.alpha = 0.0
+        
+        }
+//        for _ in 0...10
+//        {
+//            addToPattern()
+//        }
+//
+//        displayPattern()
     }
     
     
@@ -59,8 +77,8 @@ class ViewController: UIViewController
         }
         else
         {
-            timer.invalidate()
             index = 0
+              timer.invalidate()
         }
     }
     public func addToPattern()
@@ -70,14 +88,41 @@ class ViewController: UIViewController
     
     @IBAction func onColorTapped(_ sender: UITapGestureRecognizer)
     {
-        for number in 0..<colorDisplays.count
+        if playersTurn
         {
-            if colorDisplays[number].frame.contains(sender.location(in: backgroundView))
+            for number in 0..<colorDisplays.count
             {
-                flashColor(number: number)
-                
+                if colorDisplays[number].frame.contains(sender.location(in:backgroundView))
+                {
+                    if pattern[index] == number
+                    {
+                        flashColor(number: number)
+                        index += 1
+                        if index == pattern.count
+                        {
+                            index = 0
+                            playersTurn = true
+                            messageLabel.text = ""
+                            addToPattern()
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1)
+                            {
+                                self.displayPattern()
+                            }
+                        }
+                    }
+                }
             }
         }
     }
+//    {
+//        for number in 0..<colorDisplays.count
+//        {
+//            if colorDisplays[number].frame.contains(sender.location(in: backgroundView))
+//            {
+//                flashColor(number: number)
+//
+//            }
+//        }
+//    }
 }
 
